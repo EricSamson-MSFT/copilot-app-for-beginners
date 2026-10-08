@@ -13,6 +13,10 @@ npm install
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
 
+Use the **Dark theme** button to switch between light and dark themes. The app starts
+in light mode each time you reload the page. Switching themes keeps your search,
+filters, and reading statistics unchanged.
+
 ## Validate changes
 
 ```bash

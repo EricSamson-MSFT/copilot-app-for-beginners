@@ -1,5 +1,5 @@
 import React from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BookCard } from "./components/BookCard";
 import { BookFilters } from "./components/BookFilters";
 import { ReadingStats } from "./components/ReadingStats";
@@ -39,9 +39,24 @@ export function filterBooks(bookList: Book[], filters: BookFiltersState) {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [filters, setFilters] = useState<BookFiltersState>(defaultFilters);
   const genres = useMemo(() => [...new Set(books.map((book) => book.genre))].sort(), []);
   const filteredBooks = useMemo(() => filterBooks(books, filters), [filters]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const previousTheme = root.getAttribute("data-theme");
+    root.dataset.theme = theme;
+
+    return () => {
+      if (previousTheme === null) {
+        root.removeAttribute("data-theme");
+      } else {
+        root.setAttribute("data-theme", previousTheme);
+      }
+    };
+  }, [theme]);
 
   return (
     <main className="app-shell">
@@ -52,6 +67,14 @@ export default function App() {
           Explore a small reading list used throughout the course to practice issues, pull
           requests, review comments, tests, and browser validation.
         </p>
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-pressed={theme === "dark"}
+          onClick={() => setTheme((current) => (current === "light" ? "dark" : "light"))}
+        >
+          Dark theme
+        </button>
       </section>
 
       <ReadingStats books={filteredBooks} />
