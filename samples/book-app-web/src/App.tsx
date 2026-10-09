@@ -83,7 +83,7 @@ export default function App() {
         ) : (
           <div className="empty-state" role="status">
             <h2>No books found</h2>
-            <p>Adjust your filters and try again.</p>
+            <p>Try a different search term, genre, or reading status.</p>
           </div>
         )}
       </section>
