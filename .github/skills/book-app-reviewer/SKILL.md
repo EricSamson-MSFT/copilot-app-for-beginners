@@ -15,6 +15,8 @@ Use this skill to review changes in `samples/book-app-web`.
 4. Review accessibility for labels, region names, keyboard-friendly controls, and useful empty states.
 5. Review responsive behavior for the filter row, stats cards, and book card grid.
 6. Keep changes small enough for a beginner to understand in a course chapter.
+7. Check that headings describe the page structure: one page-level h1, section headings below it, and book titles below the results heading.
+8. Check that informative images and icons have text alternatives. Decorative images should use empty alt text, and decorative icons should be hidden from assistive technology.
 
 ## Preferred feedback style
 
